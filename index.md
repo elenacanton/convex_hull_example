@@ -15,11 +15,24 @@ pd.DataFrame(coords).dropna().plot.scatter(x=0, y=1)
 import matplotlib.pyplot as plt
 plt.gca().set_aspect('equal')
 
-# Shaughnessy
+from shapely.geometry import Polygon
 
-![image](https://user-images.githubusercontent.com/52316463/141693960-7394ed0d-73fb-41bb-a51b-288570662f6d.png)
+Polygon(
+    list(
+        pd.DataFrame(coords).apply(lambda srs: (srs[0], srs[1]), axis='columns').values
+    )
+).convex_hull
+
+# Kerrisdale
+![image](https://user-images.githubusercontent.com/52316463/142045067-282cf188-3bb0-488e-8168-15bc817c48fb.png)
+![image](https://user-images.githubusercontent.com/52316463/142045105-6d31f546-bb94-4f07-a26c-d8f081fb9409.png)
+
+
 
 # Strachocona:
 
 ![image](https://user-images.githubusercontent.com/52316463/141694026-12c4897b-5445-4378-aba5-73df1bcd9522.png)
+![image](https://user-images.githubusercontent.com/52316463/142045174-969edd4d-40c4-48d8-9a63-f0cdb5531955.png)
+
+
 
